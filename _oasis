@@ -13,7 +13,7 @@ Executable "intro_test"
   Build$: flag(tests)
   Path: test
   MainIs: intro_test.ml
-  CompiledObject: byte
+  CompiledObject: best
   Install: false
   BuildDepends: oUnit, intro
 
