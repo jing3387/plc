@@ -9,20 +9,20 @@ BuildTools: ocamlbuild
 Plugins: META (0.4), DevFiles (0.4)
 BuildDepends: core, threads
 
-Executable "expr_test"
+Executable "intro_test"
   Build$: flag(tests)
   Path: test
-  MainIs: expr_test.ml
-  CompiledObject: best
+  MainIs: intro_test.ml
+  CompiledObject: byte
   Install: false
-  BuildDepends: oUnit, expr
+  BuildDepends: oUnit, intro
 
-Test "expr_test"
+Test "intro_test"
   Run$: flag(tests)
-  TestTools: expr_test
-  Command: $expr_test
+  TestTools: intro_test
+  Command: $intro_test
   WorkingDirectory: test
 
-Library "expr"
+Library "intro"
   Path: src
-  Modules: Expr
+  Modules: Intro
