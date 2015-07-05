@@ -1,0 +1,28 @@
+Name: Programming Language Concepts
+Version: 0.1.0
+Synopsis: Exercises from the book "Programming Language Concepts" by Peter Sestoft
+Authors: Jarrod Jeffrey Ingram <jarrod.jeffi@gmail.com>
+License: MIT
+
+OASISFormat: 0.4
+BuildTools: ocamlbuild
+Plugins: META (0.4), DevFiles (0.4)
+BuildDepends: core, threads
+
+Executable "expr_test"
+  Build$: flag(tests)
+  Path: test
+  MainIs: expr_test.ml
+  CompiledObject: best
+  Install: false
+  BuildDepends: oUnit, expr
+
+Test "expr_test"
+  Run$: flag(tests)
+  TestTools: expr_test
+  Command: $expr_test
+  WorkingDirectory: test
+
+Library "expr"
+  Path: src
+  Modules: Expr
