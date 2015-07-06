@@ -1,5 +1,6 @@
 open Core.Std
 
+(* Playing around with option. *)
 let rec lookup env x =
   match env with
   | [] -> None
@@ -67,24 +68,18 @@ let rec simplify e =
   match e with
   | CstI _ | Var _ -> e
   | Mul (e1, e2)  ->
-    let e1' = simplify e1 in
-    let e2' = simplify e2 in
-    (match e1', e2' with
-     | (CstI 1, _) -> e2'
-     | (_, CstI 1) -> e1'
+    (match (simplify e1, simplify e2) with
+     | (CstI 1, e2') -> e2'
+     | (e1', CstI 1) -> e1'
      | (CstI 0, _) -> CstI 0
      | (_, CstI 0) -> CstI 0
      | _ -> e)
   | Add (e1, e2) ->
-    let e1' = simplify e1 in
-    let e2' = simplify e2 in
-    (match (e1', e2') with
-     | (CstI 0, _) -> e2'
-     | (_, CstI 0) -> e1'
+    (match (simplify e1, simplify e2) with
+     | (CstI 0, e2') -> e2'
+     | (e1', CstI 0) -> e1'
      | _ -> e)
   | Sub (e1, e2) ->
-    let e1' = simplify e1 in
-    let e2' = simplify e2 in
-    (match e1', e2' with
-     | (_, CstI 0) -> e1'
-     | _ -> if e1' = e2' then CstI 0 else e)
+    (match (simplify e1, simplify e2) with
+     | (e1', CstI 0) -> e1'
+     | (e1', e2') -> if e1' = e2' then CstI 0 else e)
