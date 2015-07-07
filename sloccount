@@ -1,0 +1,73 @@
+Have a non-directory at the top, so creating directory top_dir
+Adding /Users/jji/ml/plc/src/intro.ml to top_dir
+Categorizing files.
+Finding a working MD5 command....
+Found a working MD5 command.
+Computing results.
+
+
+SLOC	Directory	SLOC-by-Language (Sorted)
+68      top_dir         ml=68
+
+
+Totals grouped by language (dominant language first):
+ml:              68 (100.00%)
+
+
+
+
+Total Physical Source Lines of Code (SLOC)                = 68
+Development Effort Estimate, Person-Years (Person-Months) = 0.01 (0.14)
+ (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
+Schedule Estimate, Years (Months)                         = 0.10 (1.19)
+ (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
+Estimated Average Number of Developers (Effort/Schedule)  = 0.12
+Total Estimated Cost to Develop                           = $ 1,606
+ (average salary = $56,286/year, overhead = 2.40).
+SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
+SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.
+SLOCCount comes with ABSOLUTELY NO WARRANTY, and you are welcome to
+redistribute it under certain conditions as specified by the GNU GPL license;
+see the documentation for details.
+
+-------------------------------------------------------------------------------
+
+Please credit this data as "generated using David A. Wheeler's 'SLOCCount'."
+Have a non-directory at the top, so creating directory top_dir
+Adding /Users/jji/ml/plc/src/intro/Add.java to top_dir
+Adding /Users/jji/ml/plc/src/intro/BinOp.java to top_dir
+Adding /Users/jji/ml/plc/src/intro/CstI.java to top_dir
+Adding /Users/jji/ml/plc/src/intro/Expr.java to top_dir
+Adding /Users/jji/ml/plc/src/intro/Mul.java to top_dir
+Adding /Users/jji/ml/plc/src/intro/Sub.java to top_dir
+Adding /Users/jji/ml/plc/src/intro/Var.java to top_dir
+Categorizing files.
+Finding a working MD5 command....
+Found a working MD5 command.
+Computing results.
+
+
+SLOC	Directory	SLOC-by-Language (Sorted)
+188     top_dir         java=188
+
+
+Totals grouped by language (dominant language first):
+java:           188 (100.00%)
+
+
+
+
+Total Physical Source Lines of Code (SLOC)                = 188
+Development Effort Estimate, Person-Years (Person-Months) = 0.03 (0.42)
+ (Basic COCOMO model, Person-Months = 2.4 * (KSLOC**1.05))
+Schedule Estimate, Years (Months)                         = 0.15 (1.79)
+ (Basic COCOMO model, Months = 2.5 * (person-months**0.38))
+Estimated Average Number of Developers (Effort/Schedule)  = 0.23
+Total Estimated Cost to Develop                           = $ 4,672
+ (average salary = $56,286/year, overhead = 2.40).
+SLOCCount, Copyright (C) 2001-2004 David A. Wheeler
+SLOCCount is Open Source Software/Free Software, licensed under the GNU GPL.
+SLOCCount comes with ABSOLUTELY NO WARRANTY, and you are welcome to
+redistribute it under certain conditions as specified by the GNU GPL license;
+see the documentation for details.
+Please credit this data as "generated using David A. Wheeler's 'SLOCCount'."
