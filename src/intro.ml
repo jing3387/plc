@@ -50,18 +50,17 @@ let e2 = Mul (CstI 2, e1)
 let e3 = Add (Add (Add (Var "x", Var "y"), Var "z"), Var "w")
 
 (* Exercise 1.2.iii, Exercise 1.3 *)
-(* Top-level for tracing. *)
-let rec fmt' e n =
-  let m, s =
-    match e with
-    | CstI i -> 3, string_of_int i
-    | Var x -> 3, x
-    | Mul (e1, e2) -> 2, fmt' e1 2 ^ " * " ^ fmt' e2 3
-    | Add (e1, e2) -> 1, fmt' e1 1 ^ " + " ^ fmt' e2 2
-    | Sub (e1, e2) -> 1, fmt' e1 1 ^ " - " ^ fmt' e2 2
-  in if m < n then "(" ^ s ^ ")" else s
-
-let fmt e = fmt' e (-1)
+let fmt e =
+  let rec fmt' e n =
+    let m, s =
+      match e with
+      | CstI i -> 3, string_of_int i
+      | Var x -> 3, x
+      | Mul (e1, e2) -> 2, fmt' e1 2 ^ " * " ^ fmt' e2 3
+      | Add (e1, e2) -> 1, fmt' e1 1 ^ " + " ^ fmt' e2 2
+      | Sub (e1, e2) -> 1, fmt' e1 1 ^ " - " ^ fmt' e2 2
+    in if m < n then "(" ^ s ^ ")" else s
+  in fmt' e (-1)
 
 (* Exercise 1.2.iv *)
 let rec simplify e =
