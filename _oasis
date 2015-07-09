@@ -26,3 +26,21 @@ Test "intro_test"
 Library "intro"
   Path: src/intro
   Modules: Intro
+
+Executable "sequential_test"
+  Build$: flag(tests)
+  Path: test/intcomp
+  MainIs: sequential_test.ml
+  CompiledObject: best
+  Install: false
+  BuildDepends: oUnit, sequential
+
+Test "sequential_test"
+  Run$: flag(tests)
+  TestTools: sequential_test
+  Command: $sequential_test
+  WorkingDirectory: test/intcomp
+
+Library "sequential"
+  Path: src/intcomp
+  Modules: Sequential
