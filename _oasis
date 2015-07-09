@@ -11,7 +11,7 @@ BuildDepends: core, threads
 
 Executable "intro_test"
   Build$: flag(tests)
-  Path: test
+  Path: test/intro
   MainIs: intro_test.ml
   CompiledObject: best
   Install: false
@@ -21,8 +21,8 @@ Test "intro_test"
   Run$: flag(tests)
   TestTools: intro_test
   Command: $intro_test
-  WorkingDirectory: test
+  WorkingDirectory: test/intro
 
 Library "intro"
-  Path: src
+  Path: src/intro
   Modules: Intro
