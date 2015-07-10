@@ -1,0 +1,27 @@
+/fib {
+    % n
+    dup
+    % n n
+    2 lt
+    % n
+    {}
+    {
+        dup
+        % n n
+        1 sub
+        % n n-1
+        fib
+        % n fib(n-1)
+        exch
+        % fib(n-1) n
+        2 sub
+        % fib(n-1) n-2
+        fib
+        % fib(n-1) fib(n-2)
+        add
+        % fib(n-1) + fib(n-2)
+    }
+    ifelse
+} def
+
+0 1 9 { fib = } for
