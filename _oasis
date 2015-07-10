@@ -8,6 +8,9 @@ OASISFormat: 0.4
 BuildTools: ocamlbuild
 Plugins: META (0.4), DevFiles (0.4)
 BuildDepends: core, threads
+AlphaFeatures: ocamlbuild_more_args
+
+XOCamlbuildExtraArgs: "-menhir 'menhir --dump --explain'"
 
 Library "intro"
   Path: src/intro
@@ -58,3 +61,7 @@ Test "simultaneous_test"
   TestTools: simultaneous_test
   Command: $simultaneous_test
   WorkingDirectory: test/intcomp
+
+Library "expr"
+  Path: src/expr
+  Modules: Absyn, Exprpar, Exprlex
