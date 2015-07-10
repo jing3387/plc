@@ -9,6 +9,10 @@ BuildTools: ocamlbuild
 Plugins: META (0.4), DevFiles (0.4)
 BuildDepends: core, threads
 
+Library "intro"
+  Path: src/intro
+  Modules: Intro
+
 Executable "intro_test"
   Build$: flag(tests)
   Path: test/intro
@@ -23,9 +27,9 @@ Test "intro_test"
   Command: $intro_test
   WorkingDirectory: test/intro
 
-Library "intro"
-  Path: src/intro
-  Modules: Intro
+Library "intcomp"
+  Path: src/intcomp
+  Modules: Sequential, Simultaneous
 
 Executable "sequential_test"
   Build$: flag(tests)
@@ -33,7 +37,7 @@ Executable "sequential_test"
   MainIs: sequential_test.ml
   CompiledObject: best
   Install: false
-  BuildDepends: oUnit, sequential
+  BuildDepends: oUnit, intcomp
 
 Test "sequential_test"
   Run$: flag(tests)
@@ -41,6 +45,16 @@ Test "sequential_test"
   Command: $sequential_test
   WorkingDirectory: test/intcomp
 
-Library "sequential"
-  Path: src/intcomp
-  Modules: Sequential
+Executable "simultaneous_test"
+  Build$: flag(tests)
+  Path: test/intcomp
+  MainIs: simultaneous_test.ml
+  CompiledObject: best
+  Install: false
+  BuildDepends: oUnit, intcomp
+
+Test "simultaneous_test"
+  Run$: flag(tests)
+  TestTools: simultaneous_test
+  Command: $simultaneous_test
+  WorkingDirectory: test/intcomp
