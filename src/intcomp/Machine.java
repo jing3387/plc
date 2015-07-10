@@ -1,3 +1,10 @@
+import java.io.FileInputStream;
+import java.nio.channels.FileChannel;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
+import java.nio.ByteOrder;
+import java.util.ArrayList;
+
 /* Java implementation of a unified-stack abstract machine
 
    In a real stack machine, the stack is an array (not a list as in the SML or
@@ -19,16 +26,25 @@ class Machine {
         SCST = 0, SVAR = 1, SADD = 2, SSUB = 3, SMUL = 4, SPOP = 5, SSWAP = 6;
 
     public static void main(String[] args) {
-        final int[] rpn1 = { SCST, 17, SVAR, 0, SVAR, 1, SADD, SSWAP, SPOP };
-        System.out.println(seval(rpn1));
-        final int[] rpn2 = {
-            SCST, 17, SCST, 22, SCST, 100, SVAR, 1, SMUL, SSWAP, SPOP, SVAR, 1,
-            SADD, SSWAP, SPOP
-        };
-        System.out.println(seval(rpn2));
+        ArrayList<Integer> instrs = new ArrayList<Integer>();
+        try (FileInputStream stream = new FileInputStream(args[0])) {
+            FileChannel inChannel = stream.getChannel();
+            ByteBuffer buffer = inChannel.map(
+                FileChannel.MapMode.READ_ONLY,
+                0,
+                inChannel.size()
+            );
+            IntBuffer intBuffer = buffer.asIntBuffer();
+            while (intBuffer.hasRemaining())
+                instrs.add(intBuffer.get());
+            Integer[] instrsArr = instrs.toArray(new Integer[instrs.size()]);
+            System.out.println(seval(instrsArr));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    static int seval(int[] code) {
+    static int seval(Integer[] code) {
         int[] stack = new int[1000]; // Evaluation and env stack.
         int sp = -1;                 // Pointer to current stack top.
         int pc = 0;                  // Program counter.
