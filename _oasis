@@ -9,9 +9,10 @@ BuildTools: ocamlbuild
 Plugins: META (0.4), DevFiles (0.4)
 BuildDepends: core, threads
 AlphaFeatures: ocamlbuild_more_args
-
 XOCamlbuildExtraArgs: "-menhir 'menhir --dump --explain'"
+BetaFeatures: section_object
 
+(* Chapter 1 *)
 Library "intro"
   Path: src/intro
   Modules: Intro
@@ -30,38 +31,26 @@ Test "intro_test"
   Command: $intro_test
   WorkingDirectory: test/intro
 
+(* Chapter 2 *)
 Library "intcomp"
   Path: src/intcomp
   Modules: Sequential, Simultaneous
 
-Executable "sequential_test"
+Executable "intcomp_test"
   Build$: flag(tests)
-  Path: test/intcomp
-  MainIs: sequential_test.ml
+  Path: test
+  MainIs: intcomp_test.ml
   CompiledObject: best
   Install: false
   BuildDepends: oUnit, intcomp
 
-Test "sequential_test"
+Test "intcomp_test"
   Run$: flag(tests)
-  TestTools: sequential_test
-  Command: $sequential_test
-  WorkingDirectory: test/intcomp
+  TestTools: intcomp_test
+  Command: $intcomp_test
+  WorkingDirectory: test
 
-Executable "simultaneous_test"
-  Build$: flag(tests)
-  Path: test/intcomp
-  MainIs: simultaneous_test.ml
-  CompiledObject: best
-  Install: false
-  BuildDepends: oUnit, intcomp
-
-Test "simultaneous_test"
-  Run$: flag(tests)
-  TestTools: simultaneous_test
-  Command: $simultaneous_test
-  WorkingDirectory: test/intcomp
-
-Library "expr"
+(* Chapter 3 *)
+Object "expr"
   Path: src/expr
-  Modules: Absyn, Exprpar, Exprlex
+  Modules: Absyn, Exprpar, Exprlex, Parse
